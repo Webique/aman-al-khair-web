@@ -3,27 +3,27 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, MapPin, FileText } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { RTLIcon, RTLText } from '@/components/ui/rtl-wrapper';
+import { RTLText, RTLIcon, RTLWrapper } from '@/components/ui/rtl-wrapper';
 
 const Contact = () => {
   const { t, isRTL } = useLanguage();
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/966533731033', '_blank');
+    window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank');
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: t('contact.email'),
-      value: 'info@amanalkhair.com',
-      href: 'mailto:info@amanalkhair.com'
+      value: 'aman.alkhir1@gmail.com',
+      href: 'mailto:aman.alkhir1@gmail.com'
     },
     {
       icon: MessageCircle,
       label: t('contact.whatsapp-label'),
       value: '+966 53 373 1033',
-      href: 'https://wa.me/966533731033'
+      href: 'https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0'
     },
     {
       icon: MapPin,
@@ -76,7 +76,13 @@ const Contact = () => {
                             rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                             className="text-lg font-semibold text-primary-dark hover:text-primary transition-colors"
                           >
-                            {info.value}
+                            {info.icon === MessageCircle ? (
+                              <RTLWrapper dir="ltr">
+                                {info.value}
+                              </RTLWrapper>
+                            ) : (
+                              info.value
+                            )}
                           </a>
                         ) : (
                           <p className="text-lg font-semibold text-primary-dark">

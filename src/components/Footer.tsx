@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { RTLText } from '@/components/ui/rtl-wrapper';
+import { RTLText, RTLWrapper } from '@/components/ui/rtl-wrapper';
 
 const Footer = () => {
   const { t, isRTL } = useLanguage();
@@ -13,9 +13,9 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { label: t('contact.email'), value: 'info@amanalkhair.com' },
-    { label: t('contact.whatsapp-label'), value: '+966 53 373 1033' },
-    { label: t('contact.address'), value: t('contact.address-text') }
+    { label: t('contact.email'), value: 'aman.alkhir1@gmail.com', href: 'mailto:aman.alkhir1@gmail.com' },
+    { label: t('contact.whatsapp-label'), value: '+966 53 373 1033', href: 'https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0' },
+    { label: t('contact.address'), value: t('contact.address-text'), href: null }
   ];
 
   const handleNavClick = (href: string) => {
@@ -66,7 +66,25 @@ const Footer = () => {
             <ul className="space-y-2">
               {contactInfo.map((info, index) => (
                 <li key={index} className="text-primary-cream/70">
-                  <span className="font-medium">{info.label}:</span> {info.value}
+                  <span className="font-medium">{info.label}:</span> 
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      target={info.href.startsWith('http') ? '_blank' : undefined}
+                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="hover:text-primary-cream transition-colors ml-1"
+                    >
+                      {info.label === t('contact.whatsapp-label') ? (
+                        <RTLWrapper dir="ltr">
+                          {info.value}
+                        </RTLWrapper>
+                      ) : (
+                        info.value
+                      )}
+                    </a>
+                  ) : (
+                    <span className="ml-1">{info.value}</span>
+                  )}
                 </li>
               ))}
             </ul>

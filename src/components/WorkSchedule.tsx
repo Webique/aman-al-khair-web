@@ -219,7 +219,10 @@ const WorkSchedule = () => {
               {t('schedule.cta.description')}
             </p>
             
-            <button className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-2 mx-auto">
+            <button 
+              onClick={() => window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank')}
+              className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-2 mx-auto"
+            >
               <span>{t('schedule.cta.button')}</span>
               <ArrowRight className="h-5 w-5" />
             </button>

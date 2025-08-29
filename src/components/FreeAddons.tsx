@@ -149,7 +149,10 @@ const FreeAddons = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2">
+              <button 
+                onClick={() => window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank')}
+                className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
+              >
                 <span>{t('addons.cta.button')}</span>
                 <ArrowRight className="h-5 w-5" />
               </button>
@@ -172,8 +175,8 @@ const FreeAddons = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-background/80 backdrop-blur-sm rounded-2xl p-8 border border-primary-blush/30 shadow-lg">
             <div className="text-4xl font-bold text-primary-dark mb-2">100%</div>
-            <div className="text-primary-dark font-medium">Free of Charge</div>
-            <div className="text-primary-dark/70 text-sm">No additional costs</div>
+            <div className="text-primary-dark font-medium">{t('addons.free-charge')}</div>
+            <div className="text-primary-dark/70 text-sm">{t('addons.no-additional-costs')}</div>
           </div>
           
           <div className="bg-background/80 backdrop-blur-sm rounded-2xl p-8 border border-primary-beige/30 shadow-lg">

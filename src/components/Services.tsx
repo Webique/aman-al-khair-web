@@ -3,20 +3,25 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
   Sparkles, 
+  Droplets, 
   Wrench, 
   Building2, 
   Trash2, 
-  Wind, 
-  Droplets, 
+  Brush, 
+  Glasses, 
   Home, 
-  Bug,
-  CheckCircle2,
-  ArrowRight
+  Bug, 
+  CheckCircle2, 
+  ArrowRight 
 } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
 
 const Services = () => {
   const { t } = useLanguage();
+
+  const handleWhatsAppClick = () => {
+    window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank');
+  };
 
   const services = [
     { 
@@ -48,14 +53,14 @@ const Services = () => {
       features: ['services.features.recycling', 'services.features.hygienic', 'services.features.schedules']
     },
     { 
-      icon: Wind, 
+      icon: Brush, 
       key: 'services.deep',
       category: 'services.categories.specialized',
       description: 'services.descriptions.deep',
       features: ['services.features.equipment', 'services.features.thorough', 'services.features.odor']
     },
     { 
-      icon: Droplets, 
+      icon: Glasses, 
       key: 'services.glass',
       category: 'services.categories.glass',
       description: 'services.descriptions.glass',
@@ -143,7 +148,10 @@ const Services = () => {
                   </div>
                   
                   {/* Learn More Button */}
-                  <button className="w-full group/btn bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-medium py-3 px-4 rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center">
+                  <button 
+                    onClick={handleWhatsAppClick}
+                    className="w-full group/btn bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-medium py-3 px-4 rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+                  >
                     <span>{t('services.learn-more')}</span>
                     <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </button>
@@ -167,7 +175,10 @@ const Services = () => {
               <p className="text-xl text-primary-cream/90 mb-8 max-w-2xl mx-auto">
                 {t('services.cta.description')}
               </p>
-              <button className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
                 {t('services.cta.button')}
               </button>
             </div>

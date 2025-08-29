@@ -184,8 +184,8 @@ const translations = {
     'schedule.scheduling.description': 'Adapts to your needs',
     'schedule.time.custom': 'Custom',
     'schedule.time.included': 'Included',
-    'schedule.time.morning': '07:00 - 11:00',
-    'schedule.time.evening': '16:00 - 20:00',
+    'schedule.time.morning': 'Morning 07:00–11:00',
+    'schedule.time.evening': 'Evening 16:00–20:00',
     
     // Why Choose Us
     'why.title': 'Why Choose Us',
@@ -388,8 +388,8 @@ const translations = {
     'schedule.scheduling.description': 'تتكيف مع احتياجاتك',
     'schedule.time.custom': 'مخصص',
     'schedule.time.included': 'مشمول',
-    'schedule.time.morning': '07:00 - 11:00',
-    'schedule.time.evening': '16:00 - 20:00',
+    'schedule.time.morning': 'صباحي 07:00–11:00',
+    'schedule.time.evening': 'مسائي 16:00–20:00',
     
     // Why Choose Us
     'why.title': 'لماذا نحن',
