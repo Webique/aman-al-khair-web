@@ -2,65 +2,58 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, Zap, Users, Leaf } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { RTLText } from '@/components/ui/rtl-wrapper';
 
 const WhyChooseUs = () => {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
 
   const reasons = [
     {
       icon: Award,
-      titleKey: 'why.quality-title',
-      textKey: 'why.quality-text',
-      color: 'bg-blue-500'
+      title: t('why.quality-title'),
+      text: t('why.quality-text')
     },
     {
       icon: Zap,
-      titleKey: 'why.response-title',
-      textKey: 'why.response-text',
-      color: 'bg-yellow-500'
+      title: t('why.response-title'),
+      text: t('why.response-text')
     },
     {
       icon: Users,
-      titleKey: 'why.team-title',
-      textKey: 'why.team-text',
-      color: 'bg-purple-500'
+      title: t('why.team-title'),
+      text: t('why.team-text')
     },
     {
       icon: Leaf,
-      titleKey: 'why.sustainability-title',
-      textKey: 'why.sustainability-text',
-      color: 'bg-green-500'
+      title: t('why.sustainability-title'),
+      text: t('why.sustainability-text')
     }
   ];
 
   return (
-    <section id="why-us" className="py-20 bg-soft-gray">
+    <section id="why-us" className="py-20 bg-primary-blush">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <RTLText className="text-center mb-16" align="center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t('why.title')}
           </h2>
-        </div>
+        </RTLText>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {reasons.map((reason, index) => {
             const IconComponent = reason.icon;
             return (
-              <Card key={index} className="group shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-2 bg-gradient-card border-0">
-                <CardContent className="p-8">
-                  <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                    <div className={`w-16 h-16 ${reason.color} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-foreground mb-3">
-                        {t(reason.titleKey)}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {t(reason.textKey)}
-                      </p>
-                    </div>
+              <Card key={index} className="text-center shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-2 bg-background border-0">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-primary-dark to-primary-dark/80 rounded-full flex items-center justify-center">
+                    <IconComponent className="h-8 w-8 text-primary-cream" />
                   </div>
+                  <h3 className="text-xl font-bold text-primary-dark mb-3">
+                    {reason.title}
+                  </h3>
+                  <RTLText className="text-primary-dark/80 leading-relaxed" align="center">
+                    {reason.text}
+                  </RTLText>
                 </CardContent>
               </Card>
             );

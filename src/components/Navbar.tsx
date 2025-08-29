@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { RTLIcon } from '@/components/ui/rtl-wrapper';
 
 const Navbar = () => {
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, isRTL } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -59,13 +60,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="text-2xl font-bold text-primary">
-              {language === 'ar' ? 'أمان الخير' : 'Aman Al Khair'}
-            </div>
+            <img 
+              src="/logo.jpeg" 
+              alt={isRTL ? 'أمان الخير' : 'Aman Al Khair'}
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+          <div className={`hidden lg:flex items-center ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
             {mainNavLinks.map((link) => (
               <button
                 key={link.key}
@@ -84,12 +87,16 @@ const Navbar = () => {
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
                 {t('nav.services')}
-                <ChevronDown className="h-4 w-4 ml-1 rtl:ml-0 rtl:mr-1 transition-transform group-hover:rotate-180" />
+                <RTLIcon rtlFlip={true}>
+                  <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                </RTLIcon>
               </button>
               
               {isServicesOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-48 bg-background border border-border rounded-lg shadow-lg py-2 z-50"
+                  className={`absolute top-full mt-1 w-48 bg-background border border-border rounded-lg shadow-lg py-2 z-50 ${
+                    isRTL ? 'right-0' : 'left-0'
+                  }`}
                   onMouseEnter={() => setIsServicesOpen(true)}
                   onMouseLeave={() => setIsServicesOpen(false)}
                 >
@@ -108,7 +115,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-3 rtl:space-x-reverse">
+          <div className={`hidden lg:flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
             <Button
               variant="outline"
               size="sm"
@@ -119,11 +126,15 @@ const Navbar = () => {
             </Button>
             <Button
               onClick={handleWhatsAppClick}
-              className="bg-accent hover:bg-accent/90 shadow-button h-9 text-sm"
+              className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark shadow-button h-9 text-sm"
               size="sm"
             >
-              <MessageCircle className="h-4 w-4 mr-2 rtl:mr-0 rtl:ml-2" />
-              {t('nav.whatsapp')}
+              <RTLIcon rtlFlip={false}>
+                <MessageCircle className="h-4 w-4" />
+              </RTLIcon>
+              <span className={isRTL ? 'mr-2' : 'ml-2'}>
+                {t('nav.whatsapp')}
+              </span>
             </Button>
           </div>
 
@@ -163,7 +174,9 @@ const Navbar = () => {
                   <button
                     key={link.key}
                     onClick={() => handleNavClick(link.href)}
-                    className="block w-full text-left py-2 pl-6 text-foreground hover:text-primary transition-colors text-sm font-medium hover:bg-muted/50 rounded-md"
+                    className={`block w-full text-left py-2 text-foreground hover:text-primary transition-colors text-sm font-medium hover:bg-muted/50 rounded-md ${
+                      isRTL ? 'pr-6' : 'pl-6'
+                    }`}
                   >
                     {t(link.key)}
                   </button>
@@ -180,10 +193,14 @@ const Navbar = () => {
                 </Button>
                 <Button
                   onClick={handleWhatsAppClick}
-                  className="w-full bg-accent hover:bg-accent/90"
+                  className="w-full bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark"
                 >
-                  <MessageCircle className="h-4 w-4 mr-2 rtl:mr-0 rtl:ml-2" />
-                  {t('nav.whatsapp')}
+                  <RTLIcon rtlFlip={false}>
+                    <MessageCircle className="h-4 w-4" />
+                  </RTLIcon>
+                  <span className={isRTL ? 'mr-2' : 'ml-2'}>
+                    {t('nav.whatsapp')}
+                  </span>
                 </Button>
               </div>
             </div>

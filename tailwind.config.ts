@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				english: ['Poppins', 'sans-serif'],
-				arabic: ['Noto Kufi Arabic', 'sans-serif'],
+				english: ['Poppins', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				arabic: ['Noto Kufi Arabic', 'Noto Sans Arabic', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -32,7 +32,11 @@ export default {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
 					blue: 'hsl(var(--primary-blue))',
-					green: 'hsl(var(--primary-green))'
+					green: 'hsl(var(--primary-green))',
+					cream: 'hsl(var(--primary-cream))',
+					dark: 'hsl(var(--primary-dark))',
+					blush: 'hsl(var(--primary-blush))',
+					beige: 'hsl(var(--primary-beige))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -114,8 +118,59 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			// RTL-specific utilities
+			spacing: {
+				'18': '4.5rem',
+				'88': '22rem',
+			},
+			// RTL-aware positioning
+			inset: {
+				'1/10': '10%',
+				'2/10': '20%',
+				'3/10': '30%',
+				'4/10': '40%',
+				'5/10': '50%',
+				'6/10': '60%',
+				'7/10': '70%',
+				'8/10': '80%',
+				'9/10': '90%',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		// Custom RTL plugin
+		function({ addUtilities, theme }) {
+			const rtlUtilities = {
+				'.rtl-text-right': {
+					'[dir="rtl"] &': {
+						'text-align': 'right'
+					}
+				},
+				'.rtl-text-left': {
+					'[dir="rtl"] &': {
+						'text-align': 'left'
+					}
+				},
+				'.rtl-float-right': {
+					'[dir="rtl"] &': {
+						'float': 'right'
+					}
+				},
+				'.rtl-float-left': {
+					'[dir="rtl"] &': {
+						'float': 'left'
+					}
+				},
+				'.rtl-margin-auto': {
+					'[dir="rtl"] &': {
+						'margin-left': 'auto',
+						'margin-right': '0'
+					}
+				}
+			};
+			addUtilities(rtlUtilities);
+		}
+	],
 } satisfies Config;

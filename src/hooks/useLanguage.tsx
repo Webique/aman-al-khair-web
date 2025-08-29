@@ -6,6 +6,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  isRTL: boolean;
 }
 
 const translations = {
@@ -236,9 +237,9 @@ const translations = {
     // About
     'about.title': 'من نحن',
     'about.description': 'أمان الخير شركة سعودية ناشئة متخصصة في خدمات النظافة والصيانة وإدارة المرافق للمجمعات السكنية والتجارية. نهدف لإحداث فرق في جودة الحياة عبر حلول مبتكرة وتنفيذ احترافي.',
-    'about.quality': '%100 التزام بالجودة',
+    'about.quality': 'التزام 100% بالجودة',
     'about.team': '✓ فريق متخصص',
-    'about.cr': 'سجل تجاري: 7041589726',
+    'about.cr': 'السجل التجاري: 7041589726',
     
     // Vision & Mission
     'vision.title': 'الرؤية والرسالة',
@@ -256,7 +257,7 @@ const translations = {
     'services.facility': 'إدارة المرافق',
     'services.waste': 'إزالة النفايات اليومية',
     'services.deep': 'تنظيف عميق للردهات والممرات',
-    'services.glass': 'تلميع الواجهات الزجاجية',
+    'services.glass': 'تلميع الزجاج والنوافذ',
     'services.roof': 'تنظيف الأسطح والخزانات',
     'services.pest': 'رش المبيدات الحشرية',
     'services.categories.core': 'الخدمات الأساسية',
@@ -344,9 +345,9 @@ const translations = {
     // Additional Services
     'additional.title': 'خدمات إضافية',
     'additional.playground': 'تركيب ألعاب أطفال خارجية',
-    'additional.security': 'أنظمة أمنية لأبواب المناطق المشتركة',
+    'additional.security': 'أنظمة أمنية للمداخل المشتركة',
     'additional.canopies': 'مظلات مواقف (توريد وتركيب)',
-    'additional.landscape': 'تصميم وتنسيق الحدائق',
+    'additional.landscape': 'تصميم وتنسيق الحدائق المخصصة',
     'additional.elevator': 'صيانة المصاعد وضمان سلامتها',
     
     // Work Schedule
@@ -405,7 +406,7 @@ const translations = {
     'contact.title': 'تواصل معنا',
     'contact.cta': 'جاهز للارتقاء بممتلكاتك؟ تواصل معنا عبر واتساب الآن لتحديد موعد لتقييم مجاني لمرافقك.',
     'contact.email': 'البريد الإلكتروني',
-    'contact.whatsapp-label': 'رقم الواتس',
+    'contact.whatsapp-label': 'واتساب',
     'contact.address': 'العنوان',
     'contact.cr-label': 'السجل التجاري',
     'contact.button': 'تحدث معنا على واتساب',
@@ -422,20 +423,31 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ar'); // Changed from 'en' to 'ar'
 
   useEffect(() => {
     // Update document direction and lang attribute
     document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', language === 'ar' ? 'ar' : 'en');
+    
+    // Add RTL-specific body class for additional styling
+    if (language === 'ar') {
+      document.body.classList.add('rtl');
+      document.body.classList.remove('ltr');
+    } else {
+      document.body.classList.add('ltr');
+      document.body.classList.remove('rtl');
+    }
   }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
   };
 
+  const isRTL = language === 'ar';
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>
       {children}
     </LanguageContext.Provider>
   );

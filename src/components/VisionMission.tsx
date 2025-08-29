@@ -1,52 +1,61 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Eye, Target } from 'lucide-react';
+import { Target, Flag } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { RTLText, RTLSpacer } from '@/components/ui/rtl-wrapper';
 
 const VisionMission = () => {
-  const { t } = useLanguage();
+  const { t, isRTL } = useLanguage();
 
   return (
     <section id="vision-mission" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <RTLText className="text-center mb-16" align="center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
             {t('vision.title')}
           </h2>
-        </div>
+        </RTLText>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Vision */}
-          <Card className="shadow-card hover:shadow-lg transition-all duration-300 bg-gradient-card border-0">
-            <CardContent className="p-8 lg:p-12">
-              <div className="flex items-center mb-8">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-4 rtl:mr-0 rtl:ml-4">
-                  <Eye className="h-6 w-6 text-primary-foreground" />
+          <Card className="shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-2 bg-primary-blush border-0">
+            <CardContent className="p-8">
+              <div className="flex items-start">
+                <div className={`w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center ${
+                  isRTL ? 'ml-4' : 'mr-4'
+                }`}>
+                  <Target className="h-6 w-6 text-primary-cream" />
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
-                  {t('vision.vision-title')}
-                </h3>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-primary-dark mb-4">
+                    {t('vision.vision-title')}
+                  </h3>
+                  <RTLText className="text-primary-dark/80 leading-relaxed">
+                    {t('vision.vision-text')}
+                  </RTLText>
+                </div>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t('vision.vision-text')}
-              </p>
             </CardContent>
           </Card>
 
           {/* Mission */}
-          <Card className="shadow-card hover:shadow-lg transition-all duration-300 bg-gradient-card border-0">
-            <CardContent className="p-8 lg:p-12">
-              <div className="flex items-center mb-8">
-                <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mr-4 rtl:mr-0 rtl:ml-4">
-                  <Target className="h-6 w-6 text-accent-foreground" />
+          <Card className="shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-2 bg-primary-beige border-0">
+            <CardContent className="p-8">
+              <div className="flex items-start">
+                <div className={`w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center ${
+                  isRTL ? 'ml-4' : 'mr-4'
+                }`}>
+                  <Flag className="h-6 w-6 text-primary-cream" />
                 </div>
-                <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
-                  {t('vision.mission-title')}
-                </h3>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-primary-dark mb-4">
+                    {t('vision.mission-title')}
+                  </h3>
+                  <RTLText className="text-primary-dark/80 leading-relaxed">
+                    {t('vision.mission-text')}
+                  </RTLText>
+                </div>
               </div>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {t('vision.mission-text')}
-              </p>
             </CardContent>
           </Card>
         </div>
