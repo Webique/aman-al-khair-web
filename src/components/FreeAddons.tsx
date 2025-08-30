@@ -150,7 +150,7 @@ const FreeAddons = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button 
-                onClick={() => window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank')}
+                onClick={() => window.open('https://api.whatsapp.com/send/?phone=966573705767&text&type=phone_number&app_absent=0', '_blank')}
                 className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 text-primary-dark font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
               >
                 <span>{t('addons.cta.button')}</span>

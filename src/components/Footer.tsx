@@ -14,7 +14,7 @@ const Footer = () => {
 
   const contactInfo = [
     { label: t('contact.email'), value: 'aman.alkhir1@gmail.com', href: 'mailto:aman.alkhir1@gmail.com' },
-    { label: t('contact.whatsapp-label'), value: '+966 53 373 1033', href: 'https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0' },
+    { label: t('contact.whatsapp-label'), value: '0573705767', href: 'https://api.whatsapp.com/send/?phone=966573705767&text&type=phone_number&app_absent=0' },
     { label: t('contact.address'), value: t('contact.address-text'), href: null }
   ];
 

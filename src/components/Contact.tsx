@@ -9,7 +9,7 @@ const Contact = () => {
   const { t, isRTL } = useLanguage();
 
   const handleWhatsAppClick = () => {
-    window.open('https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0', '_blank');
+    window.open('https://api.whatsapp.com/send/?phone=966573705767&text&type=phone_number&app_absent=0', '_blank');
   };
 
   const contactInfo = [
@@ -22,8 +22,8 @@ const Contact = () => {
     {
       icon: MessageCircle,
       label: t('contact.whatsapp-label'),
-      value: '+966 53 373 1033',
-      href: 'https://api.whatsapp.com/send/?phone=966533731033&text&type=phone_number&app_absent=0'
+      value: '0573705767',
+      href: 'https://api.whatsapp.com/send/?phone=966573705767&text&type=phone_number&app_absent=0'
     },
     {
       icon: MapPin,
