@@ -25,25 +25,31 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-primary-cream">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 ${
+            isRTL ? 'leading-[1.4] md:leading-[1.5] lg:leading-[1.6]' : 'leading-[1.2] md:leading-[1.3] lg:leading-[1.4]'
+          }`}>
             {isRTL ? 'ارتقِ بمستوى ممتلكاتك. حلول متكاملة للنظافة وإدارة المرافق.' : t('hero.title')}
           </h1>
-          <p className="text-lg md:text-xl mb-12 opacity-80 max-w-2xl mx-auto leading-relaxed">
+          <p className={`text-lg md:text-xl mb-12 md:mb-16 opacity-80 max-w-2xl mx-auto leading-relaxed ${
+            isRTL ? 'leading-loose' : 'leading-relaxed'
+          }`}>
             {isRTL ? 'احصل على خطة خدمة مخصصة وعرض سعر شفاف. تواصل معنا مباشرة للحصول على استجابة سريعة.' : t('hero.description')}
           </p>
 
-          <Button
-            onClick={handleWhatsAppClick}
-            size="lg"
-            className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 shadow-button text-lg px-8 py-6 h-auto font-semibold transition-all duration-300 hover:scale-105"
-          >
-            <RTLIcon rtlFlip={false}>
-              <MessageCircle className="h-6 w-6" />
-            </RTLIcon>
-            <span className={`${isRTL ? 'mr-3' : 'ml-3'} ${isRTL ? 'text-primary-dark font-bold' : ''}`}>
-              {isRTL ? 'اطلب تقييمك عبر واتساب' : t('hero.cta')}
-            </span>
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              onClick={handleWhatsAppClick}
+              size="lg"
+              className="bg-gradient-to-r from-primary-blush to-primary-beige hover:from-primary-blush/90 hover:to-primary-beige/90 shadow-button text-lg px-8 py-6 h-auto font-semibold transition-all duration-300 hover:scale-105"
+            >
+              <RTLIcon rtlFlip={false}>
+                <MessageCircle className="h-6 w-6" />
+              </RTLIcon>
+              <span className={`${isRTL ? 'mr-3' : 'ml-3'} text-primary-dark font-bold`}>
+                {isRTL ? 'اطلب تقييمك عبر واتساب' : t('hero.cta')}
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
 
