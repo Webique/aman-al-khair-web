@@ -12,12 +12,6 @@ const Footer = () => {
     { key: 'nav.contact', href: '#contact' }
   ];
 
-  const contactInfo = [
-    { label: t('contact.email'), value: 'aman.alkhir1@gmail.com', href: 'mailto:aman.alkhir1@gmail.com' },
-    { label: t('contact.whatsapp-label'), value: '0573705767', href: 'https://api.whatsapp.com/send/?phone=966573705767&text&type=phone_number&app_absent=0' },
-    { label: t('contact.address'), value: t('contact.address-text'), href: null }
-  ];
-
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -28,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-primary-dark to-primary-dark/95 text-primary-cream py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
@@ -53,38 +47,6 @@ const Footer = () => {
                   >
                     {t(link.key)}
                   </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">
-              {t('footer.contact-info')}
-            </h4>
-            <ul className="space-y-2">
-              {contactInfo.map((info, index) => (
-                <li key={index} className="text-primary-cream/70">
-                  <span className="font-medium">{info.label}:</span> 
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="hover:text-primary-cream transition-colors ml-1"
-                    >
-                      {info.label === t('contact.whatsapp-label') ? (
-                        <RTLWrapper dir="ltr">
-                          {info.value}
-                        </RTLWrapper>
-                      ) : (
-                        info.value
-                      )}
-                    </a>
-                  ) : (
-                    <span className="ml-1">{info.value}</span>
-                  )}
                 </li>
               ))}
             </ul>
